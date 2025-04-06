@@ -7,7 +7,8 @@ namespace UrlShortner.Infrastructure.Persistence
     {
         public UrlShortnerDbContext(DbContextOptions<UrlShortnerDbContext> options) : base(options)
         {
-
         }
+
+        public DbSet<JisShortUrl> JisShortUrls { get; set; }
     }
 }
