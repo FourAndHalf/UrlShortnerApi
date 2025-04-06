@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "jmRsFfxlSeA6hAXHPapHD7wsrc64ffPIK/NdfZIUX6A=",
+  "Source": "UrlShortner.Api",
+  "BasePath": "_content/UrlShortner.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

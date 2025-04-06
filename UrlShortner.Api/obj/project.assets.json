@@ -1,0 +1,225 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "Microsoft.AspNetCore.OpenApi/9.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.OpenApi": "1.6.17"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Microsoft.OpenApi/1.6.17": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "UrlShortner.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "UrlShortner.Domain": "1.0.0",
+          "UrlShortner.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UrlShortner.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UrlShortner.Application.dll": {}
+        }
+      },
+      "UrlShortner.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/UrlShortner.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UrlShortner.Domain.dll": {}
+        }
+      },
+      "UrlShortner.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "UrlShortner.Domain": "1.0.0",
+          "UrlShortner.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UrlShortner.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UrlShortner.Infrastructure.dll": {}
+        }
+      },
+      "UrlShortner.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/UrlShortner.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UrlShortner.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.AspNetCore.OpenApi/9.0.3": {
+      "sha512": "fKh0UyGMUE+lhbovMhh3g88b9bT+y2jfZIuJ8ljY7rcCaSJ9m2Qqqbh66oULFfzWE2BUAmimzTGcPcq3jXi/Ew==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.openapi/9.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll",
+        "lib/net9.0/Microsoft.AspNetCore.OpenApi.xml",
+        "microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
+        "microsoft.aspnetcore.openapi.nuspec"
+      ]
+    },
+    "Microsoft.OpenApi/1.6.17": {
+      "sha512": "Le+kehlmrlQfuDFUt1zZ2dVwrhFQtKREdKBo+rexOwaCoYP0/qpgT9tLxCsZjsgR5Itk1UKPcbgO+FyaNid/bA==",
+      "type": "package",
+      "path": "microsoft.openapi/1.6.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/netstandard2.0/Microsoft.OpenApi.dll",
+        "lib/netstandard2.0/Microsoft.OpenApi.pdb",
+        "lib/netstandard2.0/Microsoft.OpenApi.xml",
+        "microsoft.openapi.1.6.17.nupkg.sha512",
+        "microsoft.openapi.nuspec"
+      ]
+    },
+    "UrlShortner.Application/1.0.0": {
+      "type": "project",
+      "path": "../UrlShortner.Application/UrlShortner.Application.csproj",
+      "msbuildProject": "../UrlShortner.Application/UrlShortner.Application.csproj"
+    },
+    "UrlShortner.Domain/1.0.0": {
+      "type": "project",
+      "path": "../UrlShortner.Domain/UrlShortner.Domain.csproj",
+      "msbuildProject": "../UrlShortner.Domain/UrlShortner.Domain.csproj"
+    },
+    "UrlShortner.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../UrlShortner.Infrastructure/UrlShortner.Infrastructure.csproj",
+      "msbuildProject": "../UrlShortner.Infrastructure/UrlShortner.Infrastructure.csproj"
+    },
+    "UrlShortner.Shared/1.0.0": {
+      "type": "project",
+      "path": "../UrlShortner.Shared/UrlShortner.Shared.csproj",
+      "msbuildProject": "../UrlShortner.Shared/UrlShortner.Shared.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "Microsoft.AspNetCore.OpenApi >= 9.0.3",
+      "UrlShortner.Application >= 1.0.0",
+      "UrlShortner.Infrastructure >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/fourandhalf/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Api/UrlShortner.Api.csproj",
+      "projectName": "UrlShortner.Api",
+      "projectPath": "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Api/UrlShortner.Api.csproj",
+      "packagesPath": "/home/fourandhalf/.nuget/packages/",
+      "outputPath": "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Api/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/fourandhalf/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Application/UrlShortner.Application.csproj": {
+              "projectPath": "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Application/UrlShortner.Application.csproj"
+            },
+            "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Infrastructure/UrlShortner.Infrastructure.csproj": {
+              "projectPath": "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Infrastructure/UrlShortner.Infrastructure.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.OpenApi": {
+            "target": "Package",
+            "version": "[9.0.3, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.202/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
