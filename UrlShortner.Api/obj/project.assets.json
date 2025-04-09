@@ -459,6 +459,7 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.3",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "UrlShortner.Domain": "1.0.0",
           "UrlShortner.Shared": "1.0.0"
         },

@@ -3,10 +3,9 @@ namespace UrlShortner.Application
 {
     public class ShortnerService
     {
-        private const string randomizer = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         private static Random random = new();
 
-        public async Task<string> ShortUrlGenerator()
+        public async Task<string> CreateAsync(string pOriginalUrl)
         {
             try
             {
@@ -20,7 +19,19 @@ namespace UrlShortner.Application
             return string.Empty;
         }
 
-        public async Task<string> GetOriginalUrl(string pShortUrl)
+        private Task GenerateRandomShortCode()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                // await GeneralHelper.WriteErrorToLog
+            }
+        }
+
+        public async Task<string> GetByShortUrlAsync(string pShortUrl)
         {
             try
             {
