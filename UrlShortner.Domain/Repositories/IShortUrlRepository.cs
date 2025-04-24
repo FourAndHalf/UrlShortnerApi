@@ -1,4 +1,3 @@
-
 using UrlShortner.Domain.Entities;
 
 namespace UrlShortner.Domain.Repository
@@ -7,7 +6,7 @@ namespace UrlShortner.Domain.Repository
     {
         Task<JisShortUrl> CreateAsync(JisShortUrl pJisShortUrl);
         Task<JisShortUrl> GetByShortCodeAsync(string pShortCode);
-        Task<JisShortUrl> GetByIdAsync(string pJisUid);
+        Task<JisShortUrl> GetByIdAsync(int pJisUid);
         Task IncrementClickCountAsync(int pJisUid);
         Task<bool> ShortCodeExistsAsync(string pShortCode);
     }

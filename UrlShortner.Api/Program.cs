@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using UrlShortner.Domain.Repository;
+using UrlShortner.Domain.Service;
 using UrlShortner.Infrastructure.Persistence;
+using UrlShortner.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +23,9 @@ builder.Services.AddDbContext<UrlShortnerDbContext>(options =>
         .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
         .EnableDetailedErrors()
     );
+
+builder.Services.AddScoped<IShortUrlRepository, ShortUrlRepository>();
+builder.Services.AddSingleton<IUrlShortnerService, UrlShortnerService>();
 
 var app = builder.Build();
 
