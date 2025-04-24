@@ -25,7 +25,7 @@ namespace UrlShortner.Infrastructure.Repositories
         {
             return await _context.JisShortUrls
                 .AsNoTracking()
-                .FirstOrDefaultAsync(u => u.JisShortCode == pShortCode);
+                .FirstOrDefaultAsync(u => u.JisShortenUrl == pShortCode);
         }
 
         public async Task IncrementClickCountAsync(int id)
@@ -45,13 +45,13 @@ namespace UrlShortner.Infrastructure.Repositories
         {
             return await _context.JisShortUrls
                 .AsNoTracking()
-                .FirstOrDefaultAsync(u => u.JisShortCode == pShortCode);
+                .FirstOrDefaultAsync(u => u.JisShortenUrl == pShortCode);
         }
 
         public async Task<bool> ShortCodeExistsAsync(string pShortCode)
         {
             return await _context.JisShortUrls
-                .AnyAsync(u => u.JisShortCode == pShortCode);
+                .AnyAsync(u => u.JisShortenUrl == pShortCode);
         }
     }
 

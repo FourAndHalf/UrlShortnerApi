@@ -19,6 +19,7 @@ namespace UrlShortner.Api.Controllers
         {
             try
             {
+
                 return Ok();
             }
             catch (Exception ex)

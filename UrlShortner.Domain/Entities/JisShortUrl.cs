@@ -12,7 +12,7 @@ namespace UrlShortner.Domain.Entities
         public required string JisOriginalUrl { get; set; }
 
         [Required]
-        public required string JisShortCode { get; set; }
+        public required string JisShortenUrl { get; set; }
 
         public DateTime JisCreatedAt { get; set; }
 

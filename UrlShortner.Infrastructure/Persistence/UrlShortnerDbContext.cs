@@ -9,6 +9,13 @@ namespace UrlShortner.Infrastructure.Persistence
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=url_shortener;Username=fourandhalf;Password=PinkFloyd");
+        }
+
         public DbSet<JisShortUrl> JisShortUrls { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
