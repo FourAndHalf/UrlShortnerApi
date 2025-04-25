@@ -13,11 +13,11 @@ namespace UrlShortner.Infrastructure
             _context = context;
         }
 
-        public async Task<JisShortUrl> CreateAsync(JisShortUrl pJisShortUrl)
+        public async Task<int> CreateAsync(JisShortUrl pJisShortUrl)
         {
             _context.JisShortUrls.Add(pJisShortUrl);
-            await _context.SaveChangesAsync();
-            return pJisShortUrl;
+            int result = await _context.SaveChangesAsync();
+            return result;
         }
 
         public async Task<JisShortUrl> GetByShortCodeAsync(string pShortCode)

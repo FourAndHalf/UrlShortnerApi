@@ -1,9 +1,23 @@
+using System.Text;
+using UrlShortner.Shared;
+
 namespace UrlShortner.Application
 {
     public class UrlShortnerService : IUrlShortnerService
     {
 
-        private static Random random = new();
+        public Task<string> CreateRandomShortCode()
+        {
+            Random random = new();
+            StringBuilder shortCode = new();
 
+            while (shortCode.Length < Constants.shortCodeLength)
+            {
+                int index = random.Next(0, Constants.validShortCodeCharacters.Length);
+                shortCode.Append(Constants.validShortCodeCharacters[index]);
+            }
+
+            return Task.FromResult(shortCode.ToString());
+        }
     }
 }

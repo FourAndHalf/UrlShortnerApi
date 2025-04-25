@@ -1,7 +1,7 @@
 
 using System.ComponentModel;
 
-namespace UrlShortner.Shared.Constants
+namespace UrlShortner.Shared
 {
     public static class Constants
     {

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UrlShortner.Application;
+using UrlShortner.Domain;
+using UrlShortner.Shared;
 
 namespace UrlShortner.Api.Controllers
 {
@@ -23,14 +25,40 @@ namespace UrlShortner.Api.Controllers
         #region  Create Shortened Url
 
         [HttpPost("CreateShortenedUrl")]
-        public async Task<IActionResult> CreateShortenedUrl(CreateShortUrlDto pCreateShortUrl)
+        public async Task<IActionResult> CreateShortenedUrl(CreateShortUrlRequestDto pCreateShortUrlRequest)
         {
-
             try
             {
+                bool isDuplicate = true;
+                string pShortCode = string.Empty;
 
+                while (isDuplicate)
+                {
+                    pShortCode = await _urlShortnerService.CreateRandomShortCode();
+                    isDuplicate = await _shortUrlRepository.ShortCodeExistsAsync(pShortCode);
+                }
 
-                return Ok();
+                JisShortUrl pJisShortUrl = new JisShortUrl
+                {
+                    JisOriginalUrl = pCreateShortUrlRequest.OriginalUrl,
+                    JisShortenUrl = pShortCode,
+                    JisClickCount = 0,
+                    JisCreatedAt = System.DateTime.Today,
+                    JisExpiresAt = (pCreateShortUrlRequest.DaysToExpiry > Constants.defaultExpirationDays) ?
+                                        System.DateTime.Today.AddDays(Constants.defaultExpirationDays) :
+                                        System.DateTime.Today.AddDays(pCreateShortUrlRequest.DaysToExpiry)
+                };
+
+                int result = await _shortUrlRepository.CreateAsync(pJisShortUrl);
+
+                if (result == 1)
+                {
+                    return StatusCode(200, new { Message = $"Created short url successfully. Details = {pShortCode}" });
+                }
+                else
+                {
+                    return StatusCode(405, new { Message = $"We are unable to process your request right now. Please try after some time" });
+                }
             }
             catch (Exception ex)
             {

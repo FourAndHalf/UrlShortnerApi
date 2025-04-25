@@ -1,9 +1,14 @@
 namespace UrlShortner.Application
 {
-    public class CreateShortUrlDto
+    public class CreateShortUrlRequestDto
     {
-        string originalUrl;
-        string shortenUrl;
-        int daysToExpiry;
+        public string OriginalUrl { get; set; }
+        public string ShortenUrl { get; set; }
+        public int DaysToExpiry { get; set; }
+    }
+
+    public class CreateShortUrlResponseDto
+    {
+
     }
 }
