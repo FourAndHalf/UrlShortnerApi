@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using UrlShortner.Domain.Entities;
-using UrlShortner.Domain.Repository;
-using UrlShortner.Infrastructure.Persistence;
+using UrlShortner.Domain;
+using UrlShortner.Application;
 
-namespace UrlShortner.Infrastructure.Repositories
+namespace UrlShortner.Infrastructure
 {
     public class ShortUrlRepository : IShortUrlRepository
     {

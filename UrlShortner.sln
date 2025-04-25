@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortner.Domain", "UrlSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortner.Shared", "UrlShortner.Shared\UrlShortner.Shared.csproj", "{AAC6EFBD-6118-4DAF-8346-670B5DF895F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortner.Application", "UrlShortner.Application\UrlShortner.Application.csproj", "{7D4A7533-2D76-446C-971E-E36853476A8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{AAC6EFBD-6118-4DAF-8346-670B5DF895F1}.Release|x64.Build.0 = Release|Any CPU
 		{AAC6EFBD-6118-4DAF-8346-670B5DF895F1}.Release|x86.ActiveCfg = Release|Any CPU
 		{AAC6EFBD-6118-4DAF-8346-670B5DF895F1}.Release|x86.Build.0 = Release|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Debug|x64.Build.0 = Debug|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Debug|x86.Build.0 = Debug|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Release|x64.ActiveCfg = Release|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Release|x64.Build.0 = Release|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Release|x86.ActiveCfg = Release|Any CPU
+		{7D4A7533-2D76-446C-971E-E36853476A8F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -265,6 +265,20 @@
           }
         }
       },
+      "UrlShortner.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "UrlShortner.Domain": "1.0.0",
+          "UrlShortner.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UrlShortner.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UrlShortner.Application.dll": {}
+        }
+      },
       "UrlShortner.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -698,6 +712,11 @@
         "postgresql.png"
       ]
     },
+    "UrlShortner.Application/1.0.0": {
+      "type": "project",
+      "path": "../UrlShortner.Application/UrlShortner.Application.csproj",
+      "msbuildProject": "../UrlShortner.Application/UrlShortner.Application.csproj"
+    },
     "UrlShortner.Domain/1.0.0": {
       "type": "project",
       "path": "../UrlShortner.Domain/UrlShortner.Domain.csproj",
@@ -713,7 +732,7 @@
     "net9.0": [
       "Microsoft.EntityFrameworkCore >= 9.0.3",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
-      "UrlShortner.Domain >= 1.0.0",
+      "UrlShortner.Application >= 1.0.0",
       "UrlShortner.Shared >= 1.0.0"
     ]
   },
@@ -742,8 +761,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/UrlShortner.Domain.csproj": {
-              "projectPath": "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/UrlShortner.Domain.csproj"
+            "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Application/UrlShortner.Application.csproj": {
+              "projectPath": "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Application/UrlShortner.Application.csproj"
             },
             "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/UrlShortner.Shared.csproj": {
               "projectPath": "/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/UrlShortner.Shared.csproj"

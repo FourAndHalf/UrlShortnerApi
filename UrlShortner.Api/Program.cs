@@ -1,8 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using UrlShortner.Domain.Repository;
-using UrlShortner.Domain.Service;
-using UrlShortner.Infrastructure.Persistence;
-using UrlShortner.Infrastructure.Repositories;
+using UrlShortner.Application;
+using UrlShortner.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +30,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-  app.MapOpenApi();
+    app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();

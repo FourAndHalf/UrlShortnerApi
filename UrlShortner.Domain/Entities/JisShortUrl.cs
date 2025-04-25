@@ -1,7 +1,6 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace UrlShortner.Domain.Entities
+namespace UrlShortner.Domain
 {
     public class JisShortUrl
     {

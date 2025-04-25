@@ -1,6 +1,4 @@
-using UrlShortner.Domain.Repository;
-
-namespace UrlShortner.Domain.Service
+namespace UrlShortner.Application
 {
     public class UrlShortnerService : IUrlShortnerService
     {
