@@ -233,6 +233,10 @@ namespace UrlShortner.Api.Controllers
         {
             try
             {
+                // Implemented the functionality of redirection in Program.cs file
+                // Implement this function only if this is required in someplace else
+
+                // Implement JWT Token authentication
 
                 return Ok();
             }
