@@ -24,7 +24,7 @@ namespace UrlShortner.Api.Controllers
 
         #region  Create Record
 
-        [HttpPost("CreateShortenedUrl")]
+        [HttpPost("CreateRecord")]
         public async Task<IActionResult> CreateShortenedUrl(CreateShortUrlRequestDto pCreateShortUrlRequest)
         {
             try
@@ -35,7 +35,7 @@ namespace UrlShortner.Api.Controllers
                 while (isDuplicate)
                 {
                     pShortCode = await _urlShortnerService.CreateRandomShortCode();
-                    isDuplicate = await _shortUrlRepository.ShortCodeExistsAsync(pShortCode);
+                    isDuplicate = await _shortUrlRepository.DoesShortCodeExistsAsync(pShortCode);
                 }
 
                 JisShortUrl pJisShortUrl = new JisShortUrl
@@ -53,11 +53,11 @@ namespace UrlShortner.Api.Controllers
 
                 if (resJisShortUrl.IsSuccess == true)
                 {
-                    return StatusCode(200, new { Message = $"Created short url successfully. ShortUrl = {pShortCode}. Expires on {pJisShortUrl.JisExpiresAt.ToShortDateString()}" });
+                    return StatusCode(201, new { Message = $"Created short url successfully. ShortUrl = {pShortCode}. Expires on {pJisShortUrl.JisExpiresAt.ToShortDateString()}" });
                 }
                 else
                 {
-                    return StatusCode(405, new { Message = $"We are unable to process your request right now. Please try after some time" });
+                    return StatusCode(422, new { Message = $"We are unable to process your request right now. Please try after some time" });
                 }
             }
             catch (Exception ex)
@@ -70,6 +70,55 @@ namespace UrlShortner.Api.Controllers
 
         #region Update Record 
 
+        [HttpPost("UpdateRecord")]
+        public async Task<IActionResult> UpdateShortenedUrl(UpdateShortUrlRequestDto pUpdateShortUrlRequestDto)
+        {
+            try
+            {
+                ServiceResult<bool> isExpired = await _shortUrlRepository.IsRecordExpiredByIdAsync(pUpdateShortUrlRequestDto.Id);
+
+                if (isExpired.IsSuccess == true)
+                {
+                    if (isExpired.Data == true)
+                    {
+                        return StatusCode(200, new { Message = $"This record seems to be expired" });
+                    }
+                    else
+                    {
+                        JisShortUrl pJisShortUrl = new JisShortUrl
+                        {
+                            JisOriginalUrl = pUpdateShortUrlRequestDto.OriginalUrl,
+                            JisShortenUrl = pUpdateShortUrlRequestDto.ShortenUrl,
+                            JisUid = pUpdateShortUrlRequestDto.Id
+                        };
+
+                        ServiceResult<JisShortUrl> resJisShortUrl = await _shortUrlRepository.UpdateAsync(pJisShortUrl);
+
+                        if (resJisShortUrl.IsSuccess == true)
+                        {
+                            return StatusCode(201, new { Message = $"Updated short url successfully. ShortUrl = {resJisShortUrl.Data?.JisShortenUrl}. Expires on {resJisShortUrl.Data?.JisExpiresAt.ToShortDateString()}" });
+                        }
+                        else
+                        {
+                            return StatusCode(422, new { Message = $"We are unable to process your request right now. Please try after some time" });
+                        }
+                    }
+                }
+                else
+                {
+                    return StatusCode(500, new { Message = $"Looks like record doesn't exist" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = $"An error occurred while retrieving the original url, Details = {ex.Message}" });
+            }
+        }
+
+        #endregion
+
+        #region Extend Period
+
 
 
         #endregion
@@ -81,12 +130,12 @@ namespace UrlShortner.Api.Controllers
         {
             try
             {
-                bool doesExist = await _shortUrlRepository.ShortCodeExistsAsync(pShortUrl);
+                bool doesExist = await _shortUrlRepository.DoesShortCodeExistsAsync(pShortUrl);
 
                 if (doesExist)
                 {
                     int count = await _shortUrlRepository.GetClickCount(pShortUrl);
-                    return StatusCode(200, new { Message = $"Successfully processed the request. Click Count = {count}" });
+                    return StatusCode(202, new { Message = $"Successfully processed the request. Click Count = {count}" });
                 }
                 else
                 {
@@ -105,7 +154,7 @@ namespace UrlShortner.Api.Controllers
         {
             try
             {
-                bool doesExist = await _shortUrlRepository.IdExistsAsync(pJisUid);
+                bool doesExist = await _shortUrlRepository.DoesIdExistsAsync(pJisUid);
 
                 if (doesExist)
                 {

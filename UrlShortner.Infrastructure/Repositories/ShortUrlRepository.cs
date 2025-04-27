@@ -35,7 +35,7 @@ namespace UrlShortner.Infrastructure
 
         public async Task<ServiceResult<JisShortUrl>> UpdateAsync(JisShortUrl pJisShortUrl)
         {
-            var entity = await _context.JisShortUrls.FindAsync(pJisShortUrl.JisShortenUrl);
+            var entity = await _context.JisShortUrls.FindAsync(pJisShortUrl.JisUid);
 
             if (entity == null)
                 return ServiceResult<JisShortUrl>.Failure("Failed to find given record");
@@ -50,6 +50,12 @@ namespace UrlShortner.Infrastructure
             else
                 return ServiceResult<JisShortUrl>.Failure("Failed to update given url");
         }
+
+        #endregion
+
+        #region Extend Period
+
+
 
         #endregion
 
@@ -80,16 +86,60 @@ namespace UrlShortner.Infrastructure
 
         #region Duplicate Check
 
-        public async Task<bool> ShortCodeExistsAsync(string pShortCode)
+        public async Task<bool> DoesShortCodeExistsAsync(string pShortCode)
         {
             return await _context.JisShortUrls
                 .AnyAsync(u => u.JisShortenUrl == pShortCode);
         }
 
-        public async Task<bool> IdExistsAsync(int pJisUid)
+        public async Task<bool> DoesIdExistsAsync(int pJisUid)
         {
             return await _context.JisShortUrls
                 .AnyAsync(u => u.JisUid == pJisUid);
+        }
+
+        #endregion
+
+        #region Is Record Expired Check
+
+        public async Task<ServiceResult<bool>> IsRecordExpiredByShortCodeAsync(string pShortCode)
+        {
+            var pJisShortUrl = await _context.JisShortUrls
+                                            .AsNoTracking()
+                                            .FirstOrDefaultAsync(u => u.JisShortenUrl == pShortCode);
+            if (pJisShortUrl != null)
+            {
+                if (pJisShortUrl.JisExpiresAt >= System.DateTime.Today)
+                {
+                    return ServiceResult<bool>.Success(true);
+                }
+                else
+                {
+                    return ServiceResult<bool>.Success(false);
+                }
+            }
+
+            return ServiceResult<bool>.Failure("Failed to fetch the record for checking expiry");
+        }
+
+        public async Task<ServiceResult<bool>> IsRecordExpiredByIdAsync(int pJisUid)
+        {
+            var pJisShortUrl = await _context.JisShortUrls
+                                            .AsNoTracking()
+                                            .FirstOrDefaultAsync(u => u.JisUid == pJisUid);
+            if (pJisShortUrl != null)
+            {
+                if (pJisShortUrl.JisExpiresAt >= System.DateTime.Today)
+                {
+                    return ServiceResult<bool>.Success(true);
+                }
+                else
+                {
+                    return ServiceResult<bool>.Success(false);
+                }
+            }
+
+            return ServiceResult<bool>.Failure("Failed to fetch the record for checking expiry");
         }
 
         #endregion

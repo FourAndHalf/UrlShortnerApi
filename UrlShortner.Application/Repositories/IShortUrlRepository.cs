@@ -10,8 +10,10 @@ namespace UrlShortner.Application
         Task<JisShortUrl> GetByShortCodeAsync(string pShortCode);
         Task<JisShortUrl> GetByIdAsync(int pJisUid);
         Task IncrementClickCountAsync(int pJisUid);
-        Task<bool> ShortCodeExistsAsync(string pShortCode);
-        Task<bool> IdExistsAsync(int pJisUid);
+        Task<bool> DoesShortCodeExistsAsync(string pShortCode);
+        Task<bool> DoesIdExistsAsync(int pJisUid);
+        Task<ServiceResult<bool>> DoesShortCodeExistsAsync(string pShortCode);
+        Task<ServiceResult<bool>> DoesIdExistsAsync(int pJisUid);
         Task<int> GetClickCount(int pJisUid);
         Task<int> GetClickCount(string pShortCode);
     }
