@@ -119,7 +119,50 @@ namespace UrlShortner.Api.Controllers
 
         #region Extend Period
 
+        [HttpPost("ExtendPeriod")]
+        public async Task<IActionResult> ExtendPeriodShortenedUrl(UpdateShortUrlRequestDto pUpdateShortUrlRequestDto)
+        {
+            try
+            {
+                ServiceResult<bool> doesExist = await _shortUrlRepository.DoesIdExistsAsync(pUpdateShortUrlRequestDto.Id);
 
+                if (doesExist.IsSuccess == true)
+                {
+                    if (doesExist.Data == true)
+                    {
+                        JisShortUrl pJisShortUrl = new JisShortUrl
+                        {
+                            JisOriginalUrl = pUpdateShortUrlRequestDto.OriginalUrl,
+                            JisShortenUrl = pUpdateShortUrlRequestDto.ShortenUrl,
+                            JisUid = pUpdateShortUrlRequestDto.Id
+                        };
+
+                        ServiceResult<JisShortUrl> resJisShortUrl = await _shortUrlRepository.ExtendPeriodAsync(pJisShortUrl);
+
+                        if (resJisShortUrl.IsSuccess == true)
+                        {
+                            return StatusCode(201, new { Message = $"Updated short url successfully. ShortUrl = {resJisShortUrl.Data?.JisShortenUrl}. Expires on {resJisShortUrl.Data?.JisExpiresAt.ToShortDateString()}" });
+                        }
+                        else
+                        {
+                            return StatusCode(422, new { Message = $"We are unable to process your request right now. Please try after some time" });
+                        }
+                    }
+                    else
+                    {
+                        return StatusCode(200, new { Message = $"The record you're looking for seems to be moved or deleted" });
+                    }
+                }
+                else
+                {
+                    return StatusCode(500, new { Message = $"Looks like record doesn't exist" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = $"An error occurred while retrieving the original url, Details = {ex.Message}" });
+            }
+        }
 
         #endregion
 
@@ -139,7 +182,7 @@ namespace UrlShortner.Api.Controllers
                     if (count.IsSuccess)
                         return StatusCode(200, new { Message = $"Successfully processed the request. Click Count = {count.Data}" });
                     else
-                        return StatusCode(204, new { Message = "Failed to get count from the database" })
+                        return StatusCode(204, new { Message = "Failed to get count from the database" });
                 }
                 else
                 {
@@ -158,12 +201,16 @@ namespace UrlShortner.Api.Controllers
         {
             try
             {
-                bool doesExist = await _shortUrlRepository.DoesIdExistsAsync(pJisUid);
+                ServiceResult<bool> doesExist = await _shortUrlRepository.DoesIdExistsAsync(pJisUid);
 
-                if (doesExist)
+                if (doesExist.IsSuccess && doesExist.Data)
                 {
-                    int count = await _shortUrlRepository.GetClickCount(pJisUid);
-                    return StatusCode(200, new { Message = $"Successfully processed the request. Click Count = {count}" });
+                    ServiceResult<int> count = await _shortUrlRepository.GetClickCount(pJisUid);
+
+                    if (count.IsSuccess)
+                        return StatusCode(200, new { Message = $"Successfully processed the request. Click Count = {count.Data}" });
+                    else
+                        return StatusCode(204, new { Message = "Failed to get count from the database" });
                 }
                 else
                 {
