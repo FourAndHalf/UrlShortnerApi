@@ -55,47 +55,86 @@ namespace UrlShortner.Infrastructure
 
         #region Extend Period
 
+        public async Task<ServiceResult<JisShortUrl>> ExtendPeriodAsync(JisShortUrl pJisShortUrl)
+        {
+            var entity = await _context.JisShortUrls.FindAsync(pJisShortUrl.JisUid);
 
+            if (entity == null)
+                return ServiceResult<JisShortUrl>.Failure("Failed to find given record");
+
+            entity.JisOriginalUrl = pJisShortUrl.JisOriginalUrl;
+            entity.JisExpiresAt = entity.JisExpiresAt.AddDays(Constants.defaultExpirationDays);
+
+            _context.JisShortUrls.Update(entity);
+            int result = await _context.SaveChangesAsync();
+
+            if (result == 1)
+                return ServiceResult<JisShortUrl>.Success(pJisShortUrl);
+            else
+                return ServiceResult<JisShortUrl>.Failure("Failed to extend period for given url");
+        }
 
         #endregion
 
         #region Fetch Record From Database
 
-        public async Task<JisShortUrl> GetByShortCodeAsync(string pShortCode)
+        public async Task<ServiceResult<JisShortUrl>> GetByShortCodeAsync(string pShortCode)
         {
             var objJisShortUrl = await _context.JisShortUrls
                                 .AsNoTracking()
                                 .FirstOrDefaultAsync(u => u.JisShortenUrl == pShortCode);
 
-            return objJisShortUrl;
+            if (objJisShortUrl != null)
+                return ServiceResult<JisShortUrl>.Success(objJisShortUrl);
+            else
+                return ServiceResult<JisShortUrl>.Failure("Failed to fetch record");
+
         }
 
-        public async Task<JisShortUrl> GetByIdAsync(int pJisUid)
+        public async Task<ServiceResult<JisShortUrl>> GetByIdAsync(int pJisUid)
         {
             var objJisShortUrl = await _context.JisShortUrls
                                 .AsNoTracking()
                                 .FirstOrDefaultAsync(u => u.JisUid == pJisUid);
 
-            if (objJisShortUrl == null)
-                return null;
-
-            return objJisShortUrl;
+            if (objJisShortUrl != null)
+                return ServiceResult<JisShortUrl>.Success(objJisShortUrl);
+            else
+                return ServiceResult<JisShortUrl>.Failure("Failed to fetch record");
         }
 
         #endregion
 
         #region Duplicate Check
 
-        public async Task<bool> DoesShortCodeExistsAsync(string pShortCode)
+        public async Task<ServiceResult<bool>> DoesShortCodeExistsAsync(string pShortCode)
         {
-            return await _context.JisShortUrls
-                .AnyAsync(u => u.JisShortenUrl == pShortCode);
+            bool isDuplicate = await _context.JisShortUrls
+                                    .AnyAsync(u => u.JisShortenUrl == pShortCode);
+
+            if (isDuplicate)
+            {
+                return ServiceResult<bool>.Success(true);
+            }
+            else
+            {
+                return ServiceResult<bool>.Success(false);
+            }
         }
 
-        public async Task<bool> DoesIdExistsAsync(int pJisUid)
+        public async Task<ServiceResult<bool>> DoesIdExistsAsync(int pJisUid)
         {
-            return await _context.JisShortUrls
-                .AnyAsync(u => u.JisUid == pJisUid);
+            bool isDuplicate = await _context.JisShortUrls
+                                    .AnyAsync(u => u.JisUid == pJisUid);
+
+            if (isDuplicate)
+            {
+                return ServiceResult<bool>.Success(true);
+            }
+            else
+            {
+                return ServiceResult<bool>.Success(false);
+            }
         }
 
         #endregion
@@ -156,7 +195,7 @@ namespace UrlShortner.Infrastructure
 
         #region Get Click Count
 
-        public async Task<int> GetClickCount(int pJisUid)
+        public async Task<ServiceResult<int>> GetClickCount(int pJisUid)
         {
             var objJisShortUrl = await _context.JisShortUrls
                                     .AsNoTracking()
@@ -164,15 +203,15 @@ namespace UrlShortner.Infrastructure
 
             if (objJisShortUrl != null)
             {
-                return objJisShortUrl.JisClickCount;
+                return ServiceResult<int>.Success(objJisShortUrl.JisClickCount);
             }
             else
             {
-                return 0;
+                return ServiceResult<int>.Failure("Failed to fetch record");
             }
         }
 
-        public async Task<int> GetClickCount(string pJisShortUrl)
+        public async Task<ServiceResult<int>> GetClickCount(string pJisShortUrl)
         {
             var objJisShortUrl = await _context.JisShortUrls
                                     .AsNoTracking()
@@ -180,11 +219,11 @@ namespace UrlShortner.Infrastructure
 
             if (objJisShortUrl != null)
             {
-                return objJisShortUrl.JisClickCount;
+                return ServiceResult<int>.Success(objJisShortUrl.JisClickCount);
             }
             else
             {
-                return 0;
+                return ServiceResult<int>.Failure("Failed to fetch record");
             }
         }
 

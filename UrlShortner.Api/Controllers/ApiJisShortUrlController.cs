@@ -29,10 +29,10 @@ namespace UrlShortner.Api.Controllers
         {
             try
             {
-                bool isDuplicate = true;
+                ServiceResult<bool> isDuplicate = new ServiceResult<bool> { IsSuccess = true, Data = true };
                 string pShortCode = string.Empty;
 
-                while (isDuplicate)
+                while (isDuplicate.Data && isDuplicate.IsSuccess)
                 {
                     pShortCode = await _urlShortnerService.CreateRandomShortCode();
                     isDuplicate = await _shortUrlRepository.DoesShortCodeExistsAsync(pShortCode);
@@ -130,12 +130,16 @@ namespace UrlShortner.Api.Controllers
         {
             try
             {
-                bool doesExist = await _shortUrlRepository.DoesShortCodeExistsAsync(pShortUrl);
+                ServiceResult<bool> doesExist = await _shortUrlRepository.DoesShortCodeExistsAsync(pShortUrl);
 
-                if (doesExist)
+                if (doesExist.IsSuccess && doesExist.Data)
                 {
-                    int count = await _shortUrlRepository.GetClickCount(pShortUrl);
-                    return StatusCode(202, new { Message = $"Successfully processed the request. Click Count = {count}" });
+                    ServiceResult<int> count = await _shortUrlRepository.GetClickCount(pShortUrl);
+
+                    if (count.IsSuccess)
+                        return StatusCode(200, new { Message = $"Successfully processed the request. Click Count = {count.Data}" });
+                    else
+                        return StatusCode(204, new { Message = "Failed to get count from the database" })
                 }
                 else
                 {
