@@ -1,0 +1,12 @@
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/bin/Release/net9.0/UrlShortner.Shared.deps.json
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/bin/Release/net9.0/UrlShortner.Shared.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/bin/Release/net9.0/UrlShortner.Shared.pdb
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/UrlShortner.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/UrlShortner.Shared.AssemblyInfoInputs.cache
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/UrlShortner.Shared.AssemblyInfo.cs
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/UrlShortner.Shared.csproj.CoreCompileInputs.cache
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/UrlShortner.Shared.sourcelink.json
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/UrlShortner.Shared.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/refint/UrlShortner.Shared.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/UrlShortner.Shared.pdb
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Shared/obj/Release/net9.0/ref/UrlShortner.Shared.dll

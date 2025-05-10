@@ -1,0 +1,7 @@
+{
+  "UrlShortner.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/home\/fourandhalf\/Documents\/Projects\/UrlShortner\/UrlShortner.Api",
+  "UrlShortner.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/home\/fourandhalf\/Documents\/Projects\/UrlShortner\/UrlShortner.Application",
+  "UrlShortner.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/home\/fourandhalf\/Documents\/Projects\/UrlShortner\/UrlShortner.Domain",
+  "UrlShortner.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/home\/fourandhalf\/Documents\/Projects\/UrlShortner\/UrlShortner.Infrastructure",
+  "UrlShortner.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/home\/fourandhalf\/Documents\/Projects\/UrlShortner\/UrlShortner.Shared"
+}

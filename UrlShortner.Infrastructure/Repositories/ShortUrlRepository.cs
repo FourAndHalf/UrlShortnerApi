@@ -105,35 +105,6 @@ namespace UrlShortner.Infrastructure
 
         #endregion
 
-        #region Fetch Original Url From Database
-
-        public async Task<ServiceResult<JisShortUrl>> GetByShortCodeAsync(string pShortCode)
-        {
-            var objJisShortUrl = await _context.JisShortUrls
-                                .AsNoTracking()
-                                .FirstOrDefaultAsync(u => u.JisShortenUrl == pShortCode);
-
-            if (objJisShortUrl != null)
-                return ServiceResult<JisShortUrl>.Success(objJisShortUrl);
-            else
-                return ServiceResult<JisShortUrl>.Failure("Failed to fetch record");
-
-        }
-
-        public async Task<ServiceResult<JisShortUrl>> GetByIdAsync(int pJisUid)
-        {
-            var objJisShortUrl = await _context.JisShortUrls
-                                .AsNoTracking()
-                                .FirstOrDefaultAsync(u => u.JisUid == pJisUid);
-
-            if (objJisShortUrl != null)
-                return ServiceResult<JisShortUrl>.Success(objJisShortUrl);
-            else
-                return ServiceResult<JisShortUrl>.Failure("Failed to fetch record");
-        }
-
-        #endregion
-
         #region Duplicate Check
 
         public async Task<ServiceResult<bool>> DoesShortCodeExistsAsync(string pShortCode)

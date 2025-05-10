@@ -1,0 +1,3 @@
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Shared.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Shared.deps.json
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Shared.pdb

@@ -1,0 +1,12 @@
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/bin/Release/net9.0/UrlShortner.Domain.deps.json
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/bin/Release/net9.0/UrlShortner.Domain.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/bin/Release/net9.0/UrlShortner.Domain.pdb
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/UrlShortner.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/UrlShortner.Domain.AssemblyInfoInputs.cache
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/UrlShortner.Domain.AssemblyInfo.cs
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/UrlShortner.Domain.csproj.CoreCompileInputs.cache
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/UrlShortner.Domain.sourcelink.json
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/UrlShortner.Domain.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/refint/UrlShortner.Domain.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/UrlShortner.Domain.pdb
+/home/fourandhalf/Documents/Projects/UrlShortner/UrlShortner.Domain/obj/Release/net9.0/ref/UrlShortner.Domain.dll

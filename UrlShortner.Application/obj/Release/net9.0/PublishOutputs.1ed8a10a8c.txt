@@ -1,0 +1,7 @@
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Application.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Application.deps.json
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Application.pdb
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Domain.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Shared.dll
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Domain.pdb
+/home/fourandhalf/Documents/Projects/UrlShortner/publish/UrlShortner.Shared.pdb

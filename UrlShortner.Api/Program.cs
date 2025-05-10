@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using UrlShortner.Application;
 using UrlShortner.Infrastructure;
@@ -84,7 +85,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
 
-app.MapGet("/{shortCode}", async (string shortCode, ShortUrlRepository pShortUrlRepository) =>
+app.MapGet("/{shortCode}", async (string shortCode, [FromServices] ShortUrlRepository pShortUrlRepository) =>
 {
     if (shortCode == "favicon.ico")
     {
@@ -98,7 +99,7 @@ app.MapGet("/{shortCode}", async (string shortCode, ShortUrlRepository pShortUrl
         return Results.NotFound("Short URL not found");
     }
 
-    if (pJisShortUrl.IsSuccess)
+    if (pJisShortUrl?.IsSuccess == true && pJisShortUrl.Data != null)
     {
         await pShortUrlRepository.IncrementClickCountAsync(pJisShortUrl.Data.JisUid);
         return Results.Redirect(pJisShortUrl.Data.JisOriginalUrl, permanent: true);
